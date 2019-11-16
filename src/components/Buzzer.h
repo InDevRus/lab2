@@ -7,7 +7,7 @@ public:
     Buzzer(int pin);
     ~Buzzer();
 
-    void toggleSound(unsigned int frequency);
+    void toggleSound(int frequency);
     void stopSound();
 };
 
@@ -21,7 +21,7 @@ Buzzer::~Buzzer()
 {
 }
 
-void Buzzer::toggleSound(unsigned int frequency)
+void Buzzer::toggleSound(int frequency)
 {
     tone(pin, frequency);
 }

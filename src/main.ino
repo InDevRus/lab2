@@ -5,7 +5,7 @@
 
 #include "logic/NotesCalculator.h"
 
-const auto buzzerPin = 16;
+const auto buzzerPin = 12;
 
 const auto echoPin = 8;
 const auto triggerPin = 9;
@@ -15,16 +15,17 @@ Sensor sensor(echoPin, triggerPin);
 
 void setup()
 {
+    Serial.begin(115200);
 }
 
 void loop()
 {
     auto distance = sensor.senseDistance();
-    auto *noteFrequencyPointer = NotesCalculator::noteByDistance(distance);
+    auto noteFrequency = NotesCalculator::noteByDistance(distance);
 
-    if (noteFrequencyPointer != nullptr)
+    if (noteFrequency >= 0)
     {
-        buzzer.toggleSound(*noteFrequencyPointer);
+        buzzer.toggleSound(noteFrequency);
     }
     else
     {

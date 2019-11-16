@@ -17,12 +17,11 @@ public:
 
 Sensor::Sensor(int echoPin, int triggerPin)
 {
-    pinMode(echoPin, INPUT);
-    pinMode(triggerPin, OUTPUT);
-
     this->echoPin = echoPin;
     this->triggerPin = triggerPin;
 
+    pinMode(echoPin, INPUT);
+    pinMode(triggerPin, OUTPUT);
     digitalWrite(triggerPin, LOW);
 }
 
